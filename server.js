@@ -11,7 +11,7 @@ if ((process.env.NODE_ENV || 'development') === 'development') {
 // Set your api keys in .env file
 const CSE_ID = process.env.CSE_ID;
 const API_KEY = process.env.API_KEY;
-const MONGO_URI = process.env.MONGO_URI;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 const app = express();
 
@@ -24,9 +24,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/imagesearch/:term', (req, res) => {
+  // Pagination. Incrementing the offset will display next 10 images
   const offset = 10 * (req.query.offset || 1);
 
-  MongoClient.connect(MONGO_URI, (err, db) => {
+  MongoClient.connect(MONGODB_URI, (err, db) => {
     if (err) throw err;
 
     // Adding latest search term to the database
@@ -44,6 +45,7 @@ app.get('/api/imagesearch/:term', (req, res) => {
   const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CSE_ID}` +
   `&searchType=image&fields=items(link,snippet,image(contextLink,thumbnailLink))` +
   `&start=${offset}&q=${req.params.term}`;
+  console.log(url);
 
   request({
     url,
@@ -67,7 +69,7 @@ app.get('/api/imagesearch/:term', (req, res) => {
 });
 
 app.get('/api/latest/imagesearch/', (req, res) => {
-  MongoClient.connect(MONGO_URI, (err, db) => {
+  MongoClient.connect(MONGODB_URI, (err, db) => {
     if (err) throw err;
 
     db.collection('latest').find({}, { _id: false }).toArray((err, results) => {
