@@ -1,0 +1,62 @@
+doctype html
+html(lang="en")
+  head
+    title Image Search Abstraction Layer - Nicholas Asimov
+    link(href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css", rel="stylesheet", integrity="sha384-XYCjB+hFAjSbgf9yKUgbysEjaVLOXhCgATTEBpCqT1R3jvG5LGRAK5ZIyRbH5vpX", crossorigin="anonymous")
+  body
+    .container
+      .test
+        h1(style="margin-bottom: 15px;") API Basejump: Image Search Abstraction Layer
+        p Written by: #[a(href="https://www.freecodecamp.com/nicholasasimov") Nicholas Asimov]
+
+        blockquote
+          h3 User stories
+          ol
+            li I can get the image URLs, alt text and page urls for a set of images relating to a given search string.
+            li I can paginate through the responses by adding a ?offset=2 parameter to the URL.
+            li I can get a list of the most recently submitted search strings.
+
+        h3 Example query usage
+        code https://imagefinder.herokuapp.com/api/imagesearch/mit%campus?offset=10
+          br
+        code https://imagefinder.herokuapp.com/api/latest/imagesearch/
+
+        h3 Example query output
+        code.
+          [
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Simmons_Hall,_MIT,_Cambridge,_Massachusetts.JPG",
+              "snippet": "Simmons Hall, MIT, Cambridge,",
+              "thumbnail": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ-q3diiv3vSfIyDq4egoTUF6suHo_SOEQ9_FuCPA5Yb4KCGB1Lbni6ZMU",
+              "context": "https://en.wikipedia.org/wiki/Campus_of_the_Massachusetts_Institute_of_Technology"
+            },
+            {
+              "url": "https://libraries.mit.edu/archives/exhibits/cartoon-map/img/cartoon-map-lg.jpg",
+              "snippet": "Drawing of Campus, late 1960s?",
+              "thumbnail": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQNXLBB2YiDk-TPkS1HLwhAkGG7o0lQVU5jE-nttKk_wMc4rbWzcxl7ajMI",
+              "context": "https://libraries.mit.edu/archives/exhibits/cartoon-map/"
+            },
+            {
+              "url": "https://dc.mit.edu/sites/default/files/feature/dome.jpg",
+              "snippet": "MIT Washington Office",
+              "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScq9RwI9i4Cp4lymhOVbRRhgK43lLtj45Zxx3pkYu0w-Y29Wsn00BhXn7k",
+              "context": "https://dc.mit.edu/"
+            }
+          ]
+
+        h3 Example latest output
+        code.
+          [
+            {
+              "term": "funny cats",
+              "when": "2016-04-16T14:49:10.481Z"
+            },
+            {
+              "term": "john oliver",
+              "when": "2016-04-16T14:52:44.778Z"
+            },
+            {
+              "term": "mit campus",
+              "when": "2016-04-16T19:24:06.258Z"
+            }
+          ]

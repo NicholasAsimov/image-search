@@ -1,0 +1,31 @@
+{
+  "name": "image-search",
+  "version": "1.0.0",
+  "description": "Written by: [Nicholas Asimov](https://www.freecodecamp.com/nicholasasimov)   [FreeCodeCamp](https://www.freecodecamp.com) - [API Project: Image Search Abstraction Layer](https://www.freecodecamp.com/challenges/image-search-abstraction-layer)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicholasAsimov/image-search.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NicholasAsimov/image-search/issues"
+  },
+  "homepage": "https://github.com/NicholasAsimov/image-search#readme",
+  "devDependencies": {
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^7.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "mongodb": "^2.1.16",
+    "pug": "^2.0.0-alpha3",
+    "request": "^2.71.0"
+  }
+}
