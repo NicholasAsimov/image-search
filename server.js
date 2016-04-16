@@ -1,9 +1,12 @@
 'use strict';
 
-require('dotenv').config();
 const express = require('express');
 const request = require('request');
 const MongoClient = require('mongodb').MongoClient;
+
+if ((process.env.NODE_ENV || 'development') === 'development') {
+  require('dotenv').load();
+}
 
 // Set your api keys in .env file
 const CSE_ID = process.env.CSE_ID;
